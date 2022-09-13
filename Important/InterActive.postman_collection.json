@@ -1,0 +1,290 @@
+{
+	"info": {
+		"_postman_id": "6274cec3-b23b-46eb-a1db-f834780a7633",
+		"name": "InterActive",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7848601"
+	},
+	"item": [
+		{
+			"name": "GetAllEmployees",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Employee",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetEmployee",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Employee/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Employee",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InsertEmployee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"firstName\": \"Adham\",\r\n  \"lastName\": \"Moamer\",\r\n  \"email\": \"Adham1s2a@gmail.com\",\r\n  \"departmentId\": \"1\",\r\n  \"hireDate\": \"2022-10-10\",\r\n  \"cellPhone\": \"00971524787892\",\r\n  \"officePhone\": \"0000\",\r\n  \"position\": \"1\",\r\n  \"salary\": 12000,\r\n  \"balance\":30,\r\n  \"address\": \"Dubai-Al Barsha1\",\r\n  \"status\": true,\r\n  \"CreatedBy\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/Employee/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Employee",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateEmployee",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"employeeId\":1,\r\n  \"firstName\": \"Adham\",\r\n  \"lastName\": \"Moamer\",\r\n  \"email\": \"Adham1s2a@gmail.com\",\r\n  \"departmentId\": \"1\",\r\n  \"hireDate\": \"2022-10-10\",\r\n  \"cellPhone\": \"00971524787892\",\r\n  \"officePhone\": \"0000\",\r\n  \"position\": \"1\",\r\n  \"salary\": 12000,\r\n  \"balance\":30,\r\n  \"address\": \"Dubai-Al Barsha1\",\r\n  \"status\": true,\r\n  \"CreatedBy\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/Employee",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Employee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteEmployee",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Employee/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Employee",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllDepartments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Department",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Department"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDepartment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Department/1",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Department",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "InsertDepartment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"DepartmentName\": \"Quality Assurance\",\r\n    \"DepartmentDescription\": \"Information Technology\",\r\n    \"DepartmentPhone\": \"(+971) 3564100\",\r\n    \"DepartmentEmail\": \"QA@InterActive.com\",\r\n    \"DepartmentAddress\": \"Dubai Silicon Oasis, Le Solarium Building, Office 317, UAE\",\r\n    \"CreatedBy\": 1,\r\n    \"CreatedDate\": \"1995-01-01\",\r\n    \"Status\": true  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/Department/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Department",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateDepartment",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"DepartmentId\" :2,\r\n    \"DepartmentName\": \"Quality Assurance\",\r\n    \"DepartmentDescription\": \"Information Technology\",\r\n    \"DepartmentPhone\": \"(+971) 3564100\",\r\n    \"DepartmentEmail\": \"QA@InterActive.com\",\r\n    \"DepartmentAddress\": \"Dubai Silicon Oasis, Le Solarium Building, Office 317, UAE\",\r\n    \"CreatedBy\": 1,\r\n    \"CreatedDate\": \"1995-01-01\",\r\n    \"Status\": true  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/Department/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Department",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDepartment",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44360/api/Department/2",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Department",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddEmployeeVacation",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"VacationTypeId\":20 ,\r\n    \"EmployeeId\": 1,\r\n    \"StartDate\": \"2022-10-10\",\r\n    \"EndDate\": \"2022-10-20\",\r\n    \"createdBy\": 1,\r\n    \"createdDate\": \"2021-10-10\",\r\n    \"ApprovedBy\": 1,\r\n    \"ApprovedDate\": \"2022-10-21\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44360/api/Vacation",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44360",
+					"path": [
+						"api",
+						"Vacation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CalculateSalary",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
