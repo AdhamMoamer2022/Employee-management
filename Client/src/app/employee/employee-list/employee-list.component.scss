@@ -1,0 +1,9 @@
+.mat-table.hoverable {
+    .mat-row{
+        &:hover{
+            .mat-cell{
+                background-color: #bee0f6a9;
+            }
+        }
+    }
+}

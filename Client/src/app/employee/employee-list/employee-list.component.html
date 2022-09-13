@@ -1,0 +1,126 @@
+
+<div class="container-fluid">
+    <mat-card
+      class="p-0"
+      [ngStyle]="{
+        cursor: state$.value.deleting || state$.value.recovering ? 'progress' : ''
+      }"
+    >
+      <div class="row px-3">
+        <div class="col-sm-6 col-12">
+          <mat-form-field class="w-100">
+            <input
+              matInput
+              (keyup)="filterHandler($event)"
+              placeholder="Filter"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-sm-6 col-12 d-flex justify-content-sm-end">
+          <button
+            mat-stroked-button
+            color="primary"
+            class="my-3"
+            [routerLink]="['new']"
+          >
+            Add Employee
+          </button>
+        </div>
+      </div>
+  
+      <div *ngIf="dataSource" class="w-100" style="overflow: auto">
+        <table
+          mat-table
+          #table
+          matTableResponsive
+          [dataSource]="dataSource"
+          class="w-100 hoverable">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>
+              <span class="text-nowrap"> Name</span>
+            </th>
+  
+            <td mat-cell *matCellDef="let element">
+              <a
+                [routerLink]="['/', 'employee', element.EmployeeId]"
+                class="cursor-pointer text-nowrap mx-3 d-flex align-items-center"
+              >
+                {{ element.FirstName  + element.LastName || 'N/A' }}
+              </a>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>
+              <span class="text-nowrap"> Email</span>
+            </th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.Email }}
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="department">
+            <th mat-header-cell *matHeaderCellDef>
+              <span class="text-nowrap"> Department</span>
+            </th>
+            <td mat-cell *matCellDef="let element">
+              <span>{{ element.DepartmentName }}</span>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">
+              <span *ngIf="element.Status; else notVerified">
+                <mat-icon style="color: green" class="ms-2">done</mat-icon>
+              </span>
+              <ng-template #notVerified>
+                <mat-icon style="color: red" class="ms-2">clear</mat-icon>
+              </ng-template>
+            </td>
+          </ng-container>
+  
+          <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                color="primary"
+                matTooltip="Edit Employee"
+                [routerLink]="['/', 'employee', element.EmployeeId, 'edit']"
+              >
+                <mat-icon class="mat-18">create</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button
+                  mat-icon-button
+                  color="warn"
+                  matTooltip="Delete Employee"
+                  (click)="confirmDialog(element)"
+                  >
+               
+                  <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+            </td>
+          </ng-container>
+  
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns; let i = index"
+          ></tr>
+        </table>
+        <div
+          *ngIf="state$.value.loading && !state$.value.error"
+          class="d-flex justify-content-center align-items-center py-5"
+        >
+          <mat-spinner color="primary" [diameter]="75"> </mat-spinner>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  

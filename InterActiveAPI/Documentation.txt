@@ -1,0 +1,23 @@
+﻿we have two module
+1- Employee module (add,edit,delete,read)
+2- Department module (add,edit,delete,read)
+
+
+* we need to add the vacation days for each employee in the employee module
+ - also we have vacation type (paid
+
+
+    vaction type :
+
+    Unpaid Leave 
+    Sabbatical leave
+    Compensatory leave
+    Bereavement leave
+    Paternity leave
+    Maternity leave
+    Religious holidays
+    Public holiday
+    Casual leave
+    Sick leave
+
+

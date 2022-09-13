@@ -1,0 +1,156 @@
+<div class="container">
+    <div class="row mt-4 mb-3">
+      <mat-card class="text-center">
+        <h2>Create a new Department</h2>
+      </mat-card>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <form
+          [formGroup]="DepartmentFormGroup"
+          (ngSubmit)="updateDepartmentHandler($event)"
+          class="d-flex flex-column justify-content-center "
+        >
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Department name</mat-label>
+                <input
+                  matInput
+                  placeholder="Department name"
+                  formControlName="DepartmentName"
+                />
+  
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error
+                  *ngIf="
+                                        DepartmentFormGroup.controls['DepartmentName'].errors?.['required']
+                                        "
+                >
+                  First name is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                        DepartmentFormGroup.controls['DepartmentName'].errors?.['minlength']
+                                        "
+                >
+                  First name must be at least 3 characters long
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                        DepartmentFormGroup.controls['DepartmentName'].errors?.['maxlength']
+                                        "
+                >
+                  First name must be at most 50 characters long
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Department Email</mat-label>
+                <input
+                  matInput
+                  placeholder="DepartmentEmail"
+                  formControlName="DepartmentEmail"
+                />
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error
+                  *ngIf="
+                                        DepartmentFormGroup.controls['DepartmentEmail'].errors?.['required']
+                                        "
+                >
+                  Email is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                        DepartmentFormGroup.controls['DepartmentEmail'].errors?.['email']
+                                        "
+                >
+                  Please enter a valid email address.</mat-error
+                >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>DepartmentAddress</mat-label>
+                <input
+                  matInput
+                  placeholder="DepartmentAddress"
+                  formControlName="DepartmentAddress"
+                />
+                <mat-icon matSuffix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-6"></div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Department Phone</mat-label>
+                <input
+                  matInput
+                  placeholder="Department Phone"
+                  formControlName="DepartmentPhone"
+                />
+                <mat-icon matSuffix>offline_pin</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label> Department Description </mat-label>
+                <textarea
+                  matInput
+                  cdkTextareaAutosize
+                  type="text"
+                  formControlName="DepartmentDescription"
+                  placeholder="Description"
+                  cdkAutosizeMinRows="2"
+                  cdkAutosizeMaxRows="5"
+                ></textarea>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-6">
+              <mat-checkbox class="mt-4 ms-5" formControlName="Status"
+                >Status</mat-checkbox
+              >
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="d-flex justify-content-end">
+              <div class="d-flex">
+                <button
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  class="px-5 me-2"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <fa-icon
+                      *ngIf="state$.value.formSubmitting"
+                      class="me-2"
+                      [icon]="loadingIcon"
+                      [pulse]="true"
+                    ></fa-icon>
+                    Save
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

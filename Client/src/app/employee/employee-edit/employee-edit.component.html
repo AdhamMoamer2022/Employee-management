@@ -1,0 +1,198 @@
+<div class="container">
+    <div class="row mt-4">
+      <mat-card class="text-center">
+        <h2>Update Employee</h2>
+      </mat-card>
+    </div>
+    <div class="row mt-4">
+      <div class="col-12">
+        <form
+          [formGroup]="EmployeeFormGroup"
+          (ngSubmit)="updateEmployeeHandler($event)"
+          class="d-flex flex-column justify-content-between"
+        >
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>First name</mat-label>
+                <input
+                  matInput
+                  placeholder="First name"
+                  formControlName="FirstName"
+                />
+  
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['FirstName'].errors?.['required']
+                                      "
+                >
+                  First name is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['FirstName'].errors?.['minlength']
+                                      "
+                >
+                  First name must be at least 3 characters long
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['FirstName'].errors?.['maxlength']
+                                      "
+                >
+                  First name must be at most 50 characters long
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Last name</mat-label>
+                <input
+                  matInput
+                  placeholder="Last name"
+                  formControlName="LastName"
+                />
+  
+                <mat-icon matSuffix>perm_identity</mat-icon>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['LastName'].errors?.['required']
+                                      "
+                >
+                  Last Name is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['LastName'].errors?.['minlength']
+                                      "
+                >
+                  Last Name must be at least 3 characters long
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['LastName'].errors?.['maxlength']
+                                      "
+                >
+                  Last Name must be at most 50 characters long
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="Email" />
+                <mat-icon matSuffix>email</mat-icon>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['Email'].errors?.['required']
+                                      "
+                >
+                  Email is required
+                </mat-error>
+                <mat-error
+                  *ngIf="
+                                      EmployeeFormGroup.controls['Email'].errors?.['email']
+                                      "
+                >
+                  Please enter a valid email address.</mat-error
+                >
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Address</mat-label>
+                <input matInput placeholder="Address" formControlName="Address" />
+                <mat-icon matSuffix>location_on</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Department</mat-label>
+                <mat-select formControlName="DepartmentId">
+                  <mat-option
+                    *ngFor="let department of departments$ | async"
+                    [value]="department.DepartmentId"
+                  >
+                    {{ department.DepartmentName }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Hire date</mat-label>
+                <input
+                  matInput
+                  [matDatepicker]="picker"
+                  formControlName="HireDate"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Balance</mat-label>
+                <input matInput placeholder="Vacations Balance" formControlName="Balance" />
+                <mat-icon matSuffix>offline_pin</mat-icon>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <mat-form-field appearance="outline" class="w-100">
+                <mat-label>Salary</mat-label>
+                <input matInput placeholder="Salary" formControlName="Salary" />
+                <mat-icon matSuffix>attach_money</mat-icon>
+              </mat-form-field>
+            </div>
+          </div>
+  
+          <div class="row">
+              <div class="col-6">
+                  <mat-form-field appearance="outline" class="w-100">
+                      <mat-label>Phone Number</mat-label>
+                      <input matInput placeholder="Cell phone" formControlName="Cellphone" />
+                      <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+              </div>
+            <div class="col-6">
+              <mat-checkbox class="mt-4 ms-5" formControlName="Status">Status</mat-checkbox>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="d-flex justify-content-end">
+              <div class="d-flex">
+                <button
+                  type="submit"
+                  mat-raised-button
+                  color="primary"
+                  class="px-5 me-2"
+                >
+                  <div class="d-flex justify-content-center align-items-center">
+                    <fa-icon
+                      *ngIf="state$.value.formSubmitting"
+                      class="me-2"
+                      [icon]="loadingIcon"
+                      [pulse]="true"
+                    ></fa-icon>
+                    Save
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
